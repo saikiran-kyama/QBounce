@@ -1,0 +1,79 @@
+# QBounce Service - Development Profile Configuration
+server:
+  port: 8089
+
+spring:
+  liquibase:
+    # Migrations are applied MANUALLY via: .\scripts\db-migrate.ps1 apply
+    # Diff is AUTO-generated on every mvn compile (process-classes phase)
+    enabled: true   # auto apply migrations is set to false by default
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    url: jdbc:mysql://localhost:3306/qbounce_db_dev?createDatabaseIfNotExist=true
+    user: root
+    password: root
+  # jOOQ Configuration
+  jooq:
+    sql-dialect: MYSQL
+
+  # Dual DataSource Configuration
+  datasource:
+    # WRITE datasource - for INSERT/UPDATE/DELETE on email_cache
+    writer:
+      url: jdbc:mysql://localhost:3306/qbounce_db_dev?createDatabaseIfNotExist=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    # READ datasource - for SELECT (cache lookup)
+    reader:
+      url: jdbc:mysql://localhost:3306/qbounce_db_dev
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  # DevTools configuration for hot reload
+  devtools:
+    restart:
+      enabled: true
+      poll-interval: 1s
+      quiet-period: 400ms
+    livereload:
+      enabled: true
+
+# ZeroBounce API key for development
+zerobounce:
+  api:
+    key: ${ZEROBOUNCE_API_KEY:8da29c225ccc4d6db468dcc5b8e6dba2}
+
+# QBounce Cache configuration
+qbounce:
+  cache:
+    # Cache validity in days (default: 30 days)
+    validity-days: 30
+
+
+
+# API Security
+api:
+  security:
+    # Static API key for development - change in production!
+    key: ${API_KEY:busybrainsdev}
+
+# SpringDoc OpenAPI configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+# Logging configuration
+logging:
+  level:
+    root: INFO
+    com.qbounce: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

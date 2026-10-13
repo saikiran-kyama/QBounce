@@ -1,0 +1,33 @@
+{
+  "recommendations": [
+    // Java Extension Pack (includes debugger, IntelliSense, Maven, etc.)
+    "vscjava.vscode-java-pack",
+    // Spring Boot Extension Pack
+    "vmware.vscode-boot-dev-pack",
+    // Spring Boot Dashboard
+    "vscjava.vscode-spring-boot-dashboard",
+    // Spring Initializr
+    "vscjava.vscode-spring-initializr",
+    // Lombok Annotations Support
+    "vscjava.vscode-lombok",
+    // YAML syntax support
+    "redhat.vscode-yaml",
+    // Theme for individual microservices
+    "johnpapa.vscode-peacock",
+    // For code completion and API usage examples from GitHub
+    "VisualStudioExptTeam.vscodeintellicode",
+    // Dotenv support
+    "mikestead.dotenv",
+    // TODO Tree Manage the TODO tasks
+    "gruntfuggly.todo-tree",
+    // XML support (for pom.xml)
+    "redhat.vscode-xml",
+    // REST Client for testing APIs
+    "humao.rest-client",
+    // GitLens for Git integration
+    "eamodio.gitlens",
+    // Database tools
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-mysql"
+  ]
+}

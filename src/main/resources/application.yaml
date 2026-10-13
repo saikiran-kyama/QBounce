@@ -1,0 +1,63 @@
+# QBounce Service - Common configuration for all profiles
+server:
+  port: 8080
+
+spring:
+  application:
+    name: qbounce-service
+
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE}
+
+  # Dual DataSource Configuration
+  datasource:
+    # WRITE datasource - for INSERT/UPDATE/DELETE on email_cache
+    writer:
+      url: ${DATABASE_WRITER_URL}
+      username: ${DATABASE_WRITER_USERNAME}
+      password: ${DATABASE_WRITER_PASSWORD}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    # READ datasource - for SELECT (cache lookup)
+    reader:
+      url: ${DATABASE_READER_URL}
+      username: ${DATABASE_READER_USERNAME}
+      password: ${DATABASE_READER_PASSWORD}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+# Logging configuration
+logging:
+  # structured:
+  #   format:
+  #     console: logstash
+  level:
+    root: INFO
+    com.qbounce: INFO
+    org.springframework.web: ERROR
+    org.springframework.data.redis: ERROR
+    org.hibernate.SQL: ERROR
+    org.hibernate.orm.jdbc.bind: ERROR
+
+# ZeroBounce API configuration
+zerobounce:
+  api:
+    url: https://api.zerobounce.net/v2/validate
+    key: ${ZEROBOUNCE_API_KEY}
+    connect-timeout-ms: ${ZEROBOUNCE_CONNECT_TIMEOUT_MS:5000}
+    read-timeout-ms: ${ZEROBOUNCE_READ_TIMEOUT_MS:10000}
+
+# QBounce Cache configuration
+qbounce:
+  cache:
+    # Cache validity in days (default: 30 days)
+    validity-days: ${CACHE_VALIDITY_DAYS:30}
+
+# API Security
+api:
+  security:
+    # API key for authenticating incoming requests
+    key: ${API_KEY}

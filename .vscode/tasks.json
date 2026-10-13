@@ -1,0 +1,160 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  // You can call the VSCode task from the Command Palette and search for 'Run Task'
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Maven :: Clean",
+      "type": "shell",
+      "command": "./mvnw clean",
+      "windows": {
+        "command": ".\\mvnw.cmd clean"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build"
+    },
+    {
+      "label": "Maven :: Compile",
+      "type": "shell",
+      "command": "./mvnw compile",
+      "windows": {
+        "command": ".\\mvnw.cmd compile"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build"
+    },
+    {
+      "label": "Maven :: Clean Install",
+      "type": "shell",
+      "command": "./mvnw clean install -DskipTests",
+      "windows": {
+        "command": ".\\mvnw.cmd clean install -DskipTests"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Maven :: Package",
+      "type": "shell",
+      "command": "./mvnw package -DskipTests",
+      "windows": {
+        "command": ".\\mvnw.cmd package -DskipTests"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build"
+    },
+    {
+      "label": "Maven :: Test",
+      "type": "shell",
+      "command": "./mvnw test",
+      "windows": {
+        "command": ".\\mvnw.cmd test"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "test"
+    },
+    {
+      "label": "Spring Boot :: Run (Dev)",
+      "type": "shell",
+      "command": "./mvnw spring-boot:run -Dspring-boot.run.profiles=dev",
+      "windows": {
+        "command": ".\\mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=dev"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Spring Boot :: Run (Staging)",
+      "type": "shell",
+      "command": "./mvnw spring-boot:run -Dspring-boot.run.profiles=staging",
+      "windows": {
+        "command": ".\\mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=staging"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Spring Boot :: Run (Prod)",
+      "type": "shell",
+      "command": "./mvnw spring-boot:run -Dspring-boot.run.profiles=prod",
+      "windows": {
+        "command": ".\\mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=prod"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Maven :: Dependency Tree",
+      "type": "shell",
+      "command": "./mvnw dependency:tree",
+      "windows": {
+        "command": ".\\mvnw.cmd dependency:tree"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build"
+    },
+    {
+      "label": "Maven :: Update Dependencies",
+      "type": "shell",
+      "command": "./mvnw versions:display-dependency-updates",
+      "windows": {
+        "command": ".\\mvnw.cmd versions:display-dependency-updates"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build"
+    },
+    {
+      "label": "Full Build :: Clean, Compile, Test",
+      "type": "shell",
+      "command": "echo Build completed!",
+      "dependsOn": [
+        "Maven :: Clean",
+        "Maven :: Compile",
+        "Maven :: Test"
+      ],
+      "dependsOrder": "sequence",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  // Editor settings
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.autoIndent": "full",
+  "editor.detectIndentation": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.lineNumbers": "on",
+  "editor.formatOnSaveMode": "modifications",
+  "editor.tabCompletion": "off",
+  "editor.tabSize": 4,
+  "editor.trimAutoWhitespace": true,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 120,
+  "editor.wrappingIndent": "deepIndent",
+  "editor.wrappingStrategy": "simple",
+
+  // Java settings
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+  "java.saveActions.organizeImports": true,
+  "java.sources.organizeImports.starThreshold": 5,
+  "java.sources.organizeImports.staticStarThreshold": 3,
+  "java.autobuild.enabled": true,
+
+  // Spring Boot settings
+  "spring-boot.ls.java.home": null,
+  "boot-java.rewrite.reconcile": true,
+  "spring.initializr.defaultLanguage": "Java",
+
+  // Maven settings
+  "maven.executable.path": "",
+  "maven.terminal.useJavaHome": true,
+
+  // Peacock theme color (same as auth-service.main)
+  "peacock.color": "#1857a4",
+  "peacock.remoteColor": "#1857a4",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#1f6fd0",
+    "activityBar.activeBorder": "#ee90bb",
+    "activityBar.background": "#1f6fd0",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#ee90bb",
+    "activityBarBadge.foreground": "#15202b",
+    "sash.hoverBorder": "#1f6fd0",
+    "statusBar.background": "#1857a4",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#1f6fd0",
+    "statusBarItem.remoteBackground": "#1857a4",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#1857a4",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#1857a499",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "commandCenter.border": "#e7e7e799"
+  },
+
+  // TODO Tree settings
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "alert",
+    "type": "text",
+    "foreground": "#ff0202",
+    "background": "#ffffff",
+    "opacity": 50,
+    "iconColour": "#2e00ff"
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "type": "line"
+    },
+    "FIXME": {
+      "foreground": "#000000",
+      "iconColour": "#ffff00",
+      "gutterIcon": true
+    }
+  },
+  "todo-tree.general.tagGroups": {
+    "FIXME": [
+      "FIXME",
+      "FIXIT",
+      "FIX"
+    ]
+  },
+
+  // File associations
+  "files.associations": {
+    "*.yaml": "yaml",
+    "*.yml": "yaml",
+    "application-*.yaml": "spring-boot-properties-yaml"
+  },
+
+  // Exclude from file explorer
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/target": false,
+    "**/.idea": true
+  },
+  "java.debug.settings.onBuildFailureProceed": true
+}

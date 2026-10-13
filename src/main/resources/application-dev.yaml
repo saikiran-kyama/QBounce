@@ -1,0 +1,56 @@
+# QBounce Service - Development Profile Configuration
+spring:
+  liquibase:
+    # Migrations are applied MANUALLY via: .\scripts\db-migrate.ps1 apply
+    # Diff is AUTO-generated on every mvn compile (process-classes phase)
+    enabled: true   # auto apply migrations is set to false by default
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    url: ${DATABASE_WRITER_URL}
+    user: ${DATABASE_WRITER_USER}
+    password: ${DATABASE_WRITER_PASSWORD}
+  # jOOQ Configuration
+  jooq:
+    sql-dialect: MYSQL
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  # DevTools configuration for hot reload
+  devtools:
+    restart:
+      enabled: true
+      poll-interval: 1s
+      quiet-period: 400ms
+    livereload:
+      enabled: true
+
+# ZeroBounce API key for development
+zerobounce:
+  api:
+    key: ${ZEROBOUNCE_API_KEY}
+
+# QBounce Cache configuration
+qbounce:
+  cache:
+    # Cache validity in days (default: 30 days)
+    validity-days: ${CACHE_VALIDITY_DAYS:30}
+# API Security
+api:
+  security:
+    key: ${API_KEY}
+# SpringDoc OpenAPI configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+# Logging configuration
+logging:
+  level:
+    root: INFO
+    com.qbounce: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

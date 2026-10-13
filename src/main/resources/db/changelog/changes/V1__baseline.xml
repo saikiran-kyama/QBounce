@@ -1,0 +1,161 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="S A (generated)" id="1778771631626-1">
+        <createTable tableName="contact_record">
+            <column name="first_name" type="VARCHAR(100)"/>
+            <column name="last_name" type="VARCHAR(100)"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="work_direct_phone" type="VARCHAR(50)"/>
+            <column name="home_phone" type="VARCHAR(50)"/>
+            <column name="mobile_phone" type="VARCHAR(50)"/>
+            <column name="corporate_phone" type="VARCHAR(50)"/>
+            <column name="other_phone" type="VARCHAR(50)"/>
+            <column name="title" type="VARCHAR(150)"/>
+            <column name="company" type="VARCHAR(255)"/>
+            <column name="company_name_for_emails" type="VARCHAR(255)"/>
+            <column name="seniority" type="VARCHAR(100)"/>
+            <column name="departments" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(100)"/>
+            <column name="state" type="VARCHAR(100)"/>
+            <column name="country" type="VARCHAR(100)"/>
+            <column name="contact_owner" type="VARCHAR(255)"/>
+            <column name="account_owner" type="VARCHAR(255)"/>
+            <column name="stage" type="VARCHAR(100)"/>
+            <column name="lists" type="TEXT"/>
+            <column name="last_contacted" type="datetime(6)"/>
+            <column name="replied" type="BIT(1)"/>
+            <column name="demoed" type="BIT(1)"/>
+            <column name="number_of_employees" type="INT"/>
+            <column name="industry" type="VARCHAR(255)"/>
+            <column name="keywords" type="TEXT"/>
+            <column name="company_phone" type="VARCHAR(50)"/>
+            <column name="company_address" type="VARCHAR(500)"/>
+            <column name="company_city" type="VARCHAR(100)"/>
+            <column name="company_state" type="VARCHAR(100)"/>
+            <column name="company_country" type="VARCHAR(100)"/>
+            <column name="annual_revenue" type="BIGINT"/>
+            <column name="person_linkedin_url" type="VARCHAR(500)"/>
+            <column name="website" type="VARCHAR(500)"/>
+            <column name="company_linkedin_url" type="VARCHAR(500)"/>
+            <column name="facebook_url" type="VARCHAR(500)"/>
+            <column name="twitter_url" type="VARCHAR(500)"/>
+            <column name="total_funding" type="BIGINT"/>
+            <column name="latest_funding" type="VARCHAR(100)"/>
+            <column name="latest_funding_amount" type="BIGINT"/>
+            <column name="last_raised_at" type="date"/>
+            <column name="seo_description" type="TEXT"/>
+            <column name="technologies" type="TEXT"/>
+            <column name="number_of_retail_locations" type="INT"/>
+            <column name="secondary_email" type="VARCHAR(255)"/>
+            <column name="secondary_email_source" type="VARCHAR(100)"/>
+            <column name="tertiary_email" type="VARCHAR(255)"/>
+            <column name="tertiary_email_source" type="VARCHAR(100)"/>
+            <column name="primary_intent_topic" type="VARCHAR(255)"/>
+            <column name="primary_intent_score" type="DECIMAL(5, 2)"/>
+            <column name="secondary_intent_topic" type="VARCHAR(255)"/>
+            <column name="secondary_intent_score" type="DECIMAL(5, 2)"/>
+            <column name="is_valid" type="BIT(1)"/>
+            <column name="type" type="VARCHAR(50)"/>
+            <column name="reason" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(50)"/>
+            <column name="sub_status" type="VARCHAR(50)"/>
+            <column name="free_email" type="BIT(1)"/>
+            <column name="accepted" type="BIT(1)"/>
+            <column name="validated_at" type="datetime(6)"/>
+            <column name="validated_by" type="VARCHAR(50)"/>
+            <column name="created_at" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="S A (generated)" id="1778771631626-2">
+        <createTable tableName="domain_cache">
+            <column name="domain" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="source" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="S A (generated)" id="1778771631626-3">
+        <createTable tableName="email_cache">
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="validated_at" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="validated_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="validation_result" type="VARCHAR(50)"/>
+            <column name="free_email" type="BIT(1)"/>
+            <column name="is_valid" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reason" type="VARCHAR(255)"/>
+            <column name="sub_status" type="VARCHAR(50)"/>
+            <column name="type" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="S A (generated)" id="1778771631626-4">
+        <createTable tableName="flyway_schema_history">
+            <column name="installed_rank" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="VARCHAR(50)"/>
+            <column name="description" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="script" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="checksum" type="INT"/>
+            <column name="installed_by" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="installed_on" type="TIMESTAMP(0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execution_time" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="success" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="S A (generated)" id="1778771631626-5">
+        <createTable tableName="tenant_config">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="allow_private" type="BIT(1)"/>
+            <column name="allow_public" type="BIT(1)"/>
+            <column name="allow_role_based" type="BIT(1)"/>
+            <column name="allow_temporary" type="BIT(1)"/>
+            <column name="allow_unknown" type="BIT(1)"/>
+            <column name="tenant_id" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="S A (generated)" id="1778771631626-6">
+        <createIndex associatedWith="" indexName="flyway_schema_history_s_idx" tableName="flyway_schema_history">
+            <column name="success"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

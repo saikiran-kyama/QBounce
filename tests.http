@@ -1,0 +1,88 @@
+### QBounce Validation Test Cases
+
+# This file contains requests you can run directly in IntelliJ, VS Code, or Postman
+# to test all combinations of Tenant Configurations and Domain Types.
+#
+# Remember that the TenantConfigSeeder has created:
+# - tenant-strict (Allows: PUBLIC, PRIVATE. Rejects: ROLE_BASED, TEMPORARY, UNKNOWN)
+# - tenant-lenient (Allows: PUBLIC, PRIVATE, ROLE_BASED, UNKNOWN. Rejects: TEMPORARY)
+# - tenant-standard (Allows: PUBLIC, PRIVATE, ROLE_BASED. Rejects: TEMPORARY, UNKNOWN)
+# - unknown-tenant (Does not exist in DB -> Should throw 400 Bad Request)
+
+### -------------------------------------------------------------
+### SCENARIO 1: tenant-strict
+### Expects to accept PUBLIC but reject ROLE_BASED and TEMPORARY.
+### -------------------------------------------------------------
+POST http://localhost:8080/api/v1/validation
+Content-Type: application/json
+
+{
+  "tenantId": "tenant-strict",
+  "data": [
+    "user@gmail.com",          // PUBLIC -> Should be Accepted
+    "info@somedomain.com",     // ROLE_BASED -> Should be Rejected ("Rejected by tenant configuration (domain type ROLE_BASED not allowed)")
+    "test@tempmail.com"        // TEMPORARY -> Should be Rejected ("disposable")
+  ]
+}
+
+
+
+### -------------------------------------------------------------
+### SCENARIO 2: tenant-lenient
+### Expects to accept ROLE_BASED, but reject TEMPORARY.
+### -------------------------------------------------------------
+POST http://localhost:8080/api/v1/validation
+Content-Type: application/json
+
+{
+  "tenantId": "tenant-lenient",
+  "data": [
+    "admin@company.com",       // ROLE_BASED -> Should be Accepted
+    "user@10minutemail.com",   // TEMPORARY -> Should be Rejected ("disposable")
+    "somebody@unknown.com"     // UNKNOWN -> Should be Accepted (if ZeroBounce times out / unknown)
+  ]
+}
+
+### -------------------------------------------------------------
+### SCENARIO 3: tenant-standard
+### Standard use case.
+### -------------------------------------------------------------
+POST http://localhost:8080/api/v1/validation
+Content-Type: application/json
+
+{
+  "tenantId": "tenant-standard",
+  "data": [
+    "real.person@yahoo.com",   // PUBLIC -> Should be Accepted
+    "sales@startup.io",        // ROLE_BASED -> Should be Accepted
+    "fake@guerrillamail.com"   // TEMPORARY -> Should be Rejected ("disposable")
+  ]
+}
+
+### -------------------------------------------------------------
+### SCENARIO 4: Missing Tenant Configuration
+### Expects a 400 Bad Request error.
+### -------------------------------------------------------------
+POST http://localhost:8080/api/v1/validation
+Content-Type: application/json
+
+{
+  "tenantId": "unknown-tenant-id",
+  "data": [
+    "test@example.com"
+  ]
+}
+
+### -------------------------------------------------------------
+### SCENARIO 5: Testing Invalid / Syntax Error Emails
+### -------------------------------------------------------------
+POST http://localhost:8080/api/v1/validation
+Content-Type: application/json
+
+{
+  "tenantId": "tenant-standard",
+  "data": [
+    "invalid-email-no-domain",       // Should be Rejected ("invalid")
+    "doesntexist123981@gmail.com"    // Should be Rejected ("invalid" / "mailbox_not_found")
+  ]
+}

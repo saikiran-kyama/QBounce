@@ -1,0 +1,37 @@
+# QBounce Service - Development Profile Configuration
+spring:
+  # DevTools configuration for hot reload
+  devtools:
+    livereload:
+      enabled: false
+
+# Logging configuration
+logging:
+  # structured:
+  #   format:
+  #     console: logstash
+  level:
+    root: INFO
+    com.campaign_runner: INFO
+    org.springframework.web: INFO
+    org.springframework.data.redis: INFO
+    org.hibernate.SQL: INFO
+    org.hibernate.orm.jdbc.bind: INFO
+
+# zerobounce API configuration
+zerobounce:
+  api:
+    key: ${ZEROBOUNCE_API_KEY}
+
+# API Security
+api:
+  security:
+    # API key for authenticating incoming requests
+    key: ${API_KEY}
+
+
+# QBounce Cache configuration
+qbounce:
+  cache:
+    # Cache validity in days (default: 30 days)
+    validity-days: ${CACHE_VALIDITY_DAYS:30}
